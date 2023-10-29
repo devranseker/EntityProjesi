@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbEntityProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBLADMİN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER" Type="varchar" MaxLength="20" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TBLCATEGORİES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="TBLCUSTOMER">
+    <Key>
+      <PropertyRef Name="CUSTOMERID" />
+    </Key>
+    <Property Name="CUSTOMERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMERNAME" Type="varchar" MaxLength="30" />
+    <Property Name="CUSTOMERSURNAME" Type="varchar" MaxLength="30" />
+    <Property Name="CITY" Type="varchar" MaxLength="20" />
+    <Property Name="DURUM" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBLPRODUCT">
+    <Key>
+      <PropertyRef Name="PRODUCTID" />
+    </Key>
+    <Property Name="PRODUCTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRODUCTNAME" Type="varchar" MaxLength="30" />
+    <Property Name="BRAND" Type="varchar" MaxLength="30" />
+    <Property Name="STOCK" Type="smallint" />
+    <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DURUM" Type="bit" />
+    <Property Name="CATEGORI" Type="int" />
+  </EntityType>
+  <EntityType Name="TBLSALES">
+    <Key>
+      <PropertyRef Name="SALESID" />
+    </Key>
+    <Property Name="SALESID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRODUCT" Type="int" />
+    <Property Name="CUSTOMER" Type="int" />
+    <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DATE" Type="smalldatetime" />
+  </EntityType>
+  <Association Name="FK_TBLPRODUCT_TBLCATEGORİES">
+    <End Role="TBLCATEGORİES" Type="Self.TBLCATEGORİES" Multiplicity="0..1" />
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCATEGORİES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLPRODUCT">
+        <PropertyRef Name="CATEGORI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLSALES_TBLCUSTOMER">
+    <End Role="TBLCUSTOMER" Type="Self.TBLCUSTOMER" Multiplicity="0..1" />
+    <End Role="TBLSALES" Type="Self.TBLSALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCUSTOMER">
+        <PropertyRef Name="CUSTOMERID" />
+      </Principal>
+      <Dependent Role="TBLSALES">
+        <PropertyRef Name="CUSTOMER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLSALES_TBLPRODUCT">
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="0..1" />
+    <End Role="TBLSALES" Type="Self.TBLSALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLPRODUCT">
+        <PropertyRef Name="PRODUCTID" />
+      </Principal>
+      <Dependent Role="TBLSALES">
+        <PropertyRef Name="PRODUCT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="BRANDGETIR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DbEntityProductModelStoreContainer">
+    <EntitySet Name="TBLADMİN" EntityType="Self.TBLADMİN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLCATEGORİES" EntityType="Self.TBLCATEGORİES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLCUSTOMER" EntityType="Self.TBLCUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLPRODUCT" EntityType="Self.TBLPRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLSALES" EntityType="Self.TBLSALES" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBLPRODUCT_TBLCATEGORİES" Association="Self.FK_TBLPRODUCT_TBLCATEGORİES">
+      <End Role="TBLCATEGORİES" EntitySet="TBLCATEGORİES" />
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLSALES_TBLCUSTOMER" Association="Self.FK_TBLSALES_TBLCUSTOMER">
+      <End Role="TBLCUSTOMER" EntitySet="TBLCUSTOMER" />
+      <End Role="TBLSALES" EntitySet="TBLSALES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLSALES_TBLPRODUCT" Association="Self.FK_TBLSALES_TBLPRODUCT">
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+      <End Role="TBLSALES" EntitySet="TBLSALES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

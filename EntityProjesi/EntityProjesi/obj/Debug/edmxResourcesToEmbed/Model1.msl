@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbEntityProductModelStoreContainer" CdmEntityContainer="DbEntityProductEntities">
+    <EntitySetMapping Name="TBLCATEGORİES">
+      <EntityTypeMapping TypeName="DbEntityProductModel.TBLCATEGORİES">
+        <MappingFragment StoreEntitySet="TBLCATEGORİES">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLCUSTOMER">
+      <EntityTypeMapping TypeName="DbEntityProductModel.TBLCUSTOMER">
+        <MappingFragment StoreEntitySet="TBLCUSTOMER">
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+          <ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
+          <ScalarProperty Name="CUSTOMERSURNAME" ColumnName="CUSTOMERSURNAME" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLPRODUCT">
+      <EntityTypeMapping TypeName="DbEntityProductModel.TBLPRODUCT">
+        <MappingFragment StoreEntitySet="TBLPRODUCT">
+          <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+          <ScalarProperty Name="PRODUCTNAME" ColumnName="PRODUCTNAME" />
+          <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+          <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="CATEGORI" ColumnName="CATEGORI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSALES">
+      <EntityTypeMapping TypeName="DbEntityProductModel.TBLSALES">
+        <MappingFragment StoreEntitySet="TBLSALES">
+          <ScalarProperty Name="SALESID" ColumnName="SALESID" />
+          <ScalarProperty Name="PRODUCT" ColumnName="PRODUCT" />
+          <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="BRANDGETIR" FunctionName="DbEntityProductModel.Store.BRANDGETIR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbEntityProductModel.BRANDGETIR_Result">
+          <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="TBLADMİN">
+      <EntityTypeMapping TypeName="DbEntityProductModel.TBLADMİN">
+        <MappingFragment StoreEntitySet="TBLADMİN">
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
